@@ -1,0 +1,120 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-10 col-md-8">
+            <div class="card">
+                <div class="header">
+                    <h4 class="title">Editar configuration</h4>
+                </div>
+                <div class="content">
+                    <form #userForm="ngForm" (ngSubmit)="updateUserProfile()">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>Username</label>
+                                    <input name="username" disabled="disabled" type="text" class="form-control border-input" placeholder="Username" [(ngModel)]="user.username">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>Password</label>
+                                    <input name="password" #password="ngModel" required type="password" class="form-control border-input" placeholder="Password"
+                                        value="password" [(ngModel)]="user.password" minlength="6" maxlength="13">
+                                    <div *ngIf='password.invalid && (password.dirty || password.touched)' class="alert alert-danger">
+                                      <span *ngIf="password.errors.required">Password is required</span>
+                                      <span *ngIf="password.errors.minlength">must be between 6 to 13 characters long</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Correo electronico</label>
+                                    <input name="email" #email="ngModel" required type="email" class="form-control border-input" placeholder="Email" [(ngModel)]="user.email">
+                                    <div *ngIf='email.invalid && (email.dirty || email.touched)' class="alert alert-danger">
+                                      <span *ngIf="email.errors.required">Email is required</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Nombres</label>
+                                    <input name="first" #first="ngModel" type="text" minlength="2" required class="form-control border-input" placeholder="First Name" [(ngModel)]="user.firstname">
+                                    <div *ngIf='first.invalid && (first.dirty || first.touched)' class="alert alert-danger">
+                                      <span *ngIf="first.errors.required">Firt Name is required</span>
+                                      <span *ngIf="first.errors.minlength">must have 2 characters long</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Apellidos</label>
+                                    <input name="last" type="text" #last="ngModel" minlength="2" required class="form-control border-input" placeholder="Last Name" [(ngModel)]="user.lastname">
+                                    <div *ngIf='last.invalid && (last.dirty || last.touched)' class="alert alert-danger">
+                                      <span *ngIf="last.errors.required">Last name is required</span>
+                                      <span *ngIf="last.errors.minlength">must have 2 characters long</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Direccion</label>
+                                    <input name="address" type="text" #address="ngModel" required  minlength="5" class="form-control border-input" placeholder="Home Address" [(ngModel)]="user.address">
+                                    <div *ngIf='address.invalid && (address.dirty || address.touched)' class="alert alert-danger">
+                                      <span *ngIf="address.errors.required">Address is required</span>
+                                      <span *ngIf="address.errors.minlength">must have 5 characters long</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Ciudad</label>
+                                    <input name="city" type="text" #city="ngModel" required minlength="2" class="form-control border-input" placeholder="City" [(ngModel)]="user.city">
+                                    <div *ngIf='city.invalid && (city.dirty || city.touched)' class="alert alert-danger">
+                                      <span *ngIf="city.errors.required">City is required</span>
+                                      <span *ngIf="city.errors.minlength">must have 2 characters long</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Pais</label>
+                                    <select class="form-control border-input" placeholder="Country" required>
+                                        <option *ngFor="let country of countriesList" (click)="selectCountry(country)" [value]="country">{{country}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Postal Code</label>
+                                    <input name="zip" type="number" class="form-control border-input" placeholder="ZIP Code" [(ngModel)]="user.zipCode">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Sobre ti</label>
+                                    <textarea name="about" rows="5" class="form-control border-input" placeholder="Here can be your description" value="Mike"
+                                        [(ngModel)]="user.aboutMe"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-info btn-fill btn-wd" [disabled]="!userForm.form.valid">Actualizar perfil</button>
+                        </div>
+                        <div class="clearfix"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
