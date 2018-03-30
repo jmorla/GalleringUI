@@ -28,9 +28,9 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Correo electronico</label>
-                                    <input name="email" #email="ngModel" required type="email" class="form-control border-input" placeholder="Email" [(ngModel)]="user.email">
+                                    <input name="email"[formControl]="email" required type="email" class="form-control border-input" placeholder="Email" [(ngModel)]="user.email">
                                     <div *ngIf='email.invalid && (email.dirty || email.touched)' class="alert alert-danger">
-                                      <span *ngIf="email.errors.required">Email is required</span>
+                                      <span *ngIf="email.errors.email">Invalid email format</span>
                                     </div>
                                 </div>
                             </div>

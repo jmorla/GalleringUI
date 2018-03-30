@@ -1,15 +1,15 @@
 export class Bird{
     birdId:string;
-    birth:string;
-    alias:string;
-    plate:string;
-    scrath:string;
+    birth:string;  //
+    alias:string; //
+    plate:number; //
+    scrath:string; //
     died:string;
-    sex:string;
-    status:string;
-    enrase:string;
+    sex:string; //
+    status:string; 
+    enrase:string; 
     comment:string;
-    color:string;
-    crestType:string;
+    color:string; //
+    crestType:string; 
     plateType:string;  
 }
