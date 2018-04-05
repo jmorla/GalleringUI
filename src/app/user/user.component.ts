@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormBuilder, Validators } from '@angular/forms';
 
-import { countries } from '../mock/countries.mock';
+import { COUNTRIES } from '../mock/constants.mock';
 import { User } from '../model/user';
 
 @Component({
@@ -13,7 +13,7 @@ import { User } from '../model/user';
 export class UserComponent implements OnInit{
     
     email = new FormControl('', [Validators.maxLength(50),Validators.email]);
-    countriesList:string[] = countries;
+    countriesList:string[] = COUNTRIES;
     user: User = new User();
      
     constructor(private fb : FormBuilder){

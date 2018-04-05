@@ -6,26 +6,26 @@
           <h4 class="title">Detalle de la Ave</h4>
         </div>
         <div class="content">
-          <form>
+          <form #userForm="ngForm">
             <div class="row">
               <div class="col-md-4">
                 <div class="form-group">
                   <label>Alias</label>
-                  <input name="alias" type="text" class="form-control border-input" placeholder="Alias">
+                  <input name="alias" type="text" required [(ngModel)]="model.alias" class="form-control border-input" placeholder="Alias">
                 </div>
               </div>
 
               <div class="col-md-4">
                 <div class="form-group">
                   <label>No. Placa</label>
-                  <input name="plate" type="number" class="form-control border-input" placeholder="No. Placa">
+                  <input name="plate" type="number" required [(ngModel)]="model.plate" class="form-control border-input" placeholder="No. Placa">
                 </div>
               </div>
 
               <div class="col-md-4">
                 <div class="form-group">
                   <label>Fecha de Nacimiento</label>
-                  <input name="birth" type="text" class="form-control border-input" placeholder="Nacimiento">
+                  <input name="birth" type="text" [(ngModel)]="model.birth" class="form-control border-input" placeholder="Nacimiento">
                 </div>
               </div>
             </div>
@@ -33,7 +33,8 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label>Marca Distintiva</label>
-                  <select name="scrath" type="text" class="form-control border-input" placeholder="Marca">
+                  <select name="scrath" type="text" [(ngModel)]="model.scrath" class="form-control border-input" placeholder="Marca">
+                    <option *ngFor="let scrath of scrathes" [value]="scrath">{{scrath}}</option>
                   </select>
                 </div>
               </div>
@@ -41,7 +42,8 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label>Color de alas</label>
-                  <select name="color" type="text" class="form-control border-input" placeholder="Color">
+                  <select name="color" type="text" required class="form-control border-input" placeholder="Color">
+                    <option *ngFor="let color of colors">{{color}}</option>
                   </select>
                 </div>
               </div>
@@ -51,18 +53,17 @@
                 <div class="form-group">
                   <label>Sexo</label>
                   <div class="radio">
-                    <input type="radio" name="radio1" id="radio1" value="option1">
+                    <input type="radio" [(ngModel)]="model.sex" name="sex" id="radio1" value="macho" checked="">
                     <label for="radio1">
                       Macho
                     </label>
-                 </div>
-               
-                 <div class="radio">
-                    <input type="radio" name="radio1" id="radio2" value="option2" checked="">
+                  </div>
+                  <div class="radio">
+                    <input type="radio" [(ngModel)]="model.sex" name="sex" id="radio2" value="hembra">
                     <label for="radio2">
                       Hembra
                     </label>
-                 </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -70,7 +71,8 @@
               <div class="col-md-4">
                 <div class="form-group">
                   <label>Enrace</label>
-                  <select name="color" type="text" class="form-control border-input" placeholder="Enrace">
+                  <select name="enrace" [(ngModel)]="model.enrace" type="text" class="form-control border-input" placeholder="Enrace">
+                    <option *ngFor="let enrace of enraces">{{enrace}}</option>
                   </select>
                 </div>
               </div>
@@ -78,7 +80,8 @@
               <div class="col-md-4">
                 <div class="form-group">
                   <label>Tipo Placa</label>
-                  <select name="color" type="text" class="form-control border-input" placeholder="Enrace">
+                  <select name="plateType" [(ngModel)]="model.plateType" type="text" class="form-control border-input" placeholder="Enrace">
+                      <option *ngFor="let plateType of plateTypes">{{plateType}}</option>
                   </select>
                 </div>
               </div>
@@ -86,7 +89,8 @@
               <div class="col-md-4">
                 <div class="form-group">
                   <label>Tipo Cresta</label>
-                  <select name="color" type="text" class="form-control border-input" placeholder="Enrace">
+                  <select name="color" type="text" [(ngModel)]="model.crestType" class="form-control border-input" placeholder="Enrace">
+                      <option *ngFor="let crest of crests">{{crest}}</option>
                   </select>
                 </div>
               </div>
@@ -96,7 +100,8 @@
               <div class="col-md-4">
                 <div class="form-group">
                   <label>Estado</label>
-                  <select name="color" type="text" class="form-control border-input" placeholder="Enrace">
+                  <select name="color" type="text" [(ngModel)]="model.status" class="form-control border-input" placeholder="Enrace">
+                      <option *ngFor="let status of statuses">{{status}}</option>
                   </select>
                 </div>
               </div>
@@ -104,7 +109,7 @@
               <div class="col-md-4">
                 <div class="form-group">
                   <label>Fecha de muerte</label>
-                  <input name="color" type="text" class="form-control border-input" placeholder="Enrace">
+                  <input name="color" type="text" [(ngModel)]="model.died" class="form-control border-input" placeholder="Enrace">
                 </div>
               </div>
             </div>
@@ -112,15 +117,16 @@
               <div class="col-md-12">
                 <div class="form-group">
                   <label>Comentario</label>
-                  <textarea class="form-control border-input" placeholder="Comentario hacia el animal"></textarea>
+                  <textarea class="form-control border-input" name="comment" [(ngModel)]="model.comment" placeholder="Comentario hacia el animal"></textarea>
                 </div>
-              </div>           
+              </div>
             </div>
             <div class="text-center">
-                <button type="submit" class="btn btn-info btn-fill btn-wd" [disabled]="!userForm.form.valid">Agregar Ave</button>
+              <button type="submit" class="btn btn-info btn-fill btn-wd" [disabled]="!userForm.form.valid">Agregar Ave</button>
             </div>
             <div class="clearfix"></div>
           </form>
+          {{model|json}}
         </div>
       </div>
     </div>
