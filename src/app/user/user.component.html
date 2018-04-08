@@ -86,8 +86,8 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Pais</label>
-                                    <select class="form-control border-input" placeholder="Country" required>
-                                        <option *ngFor="let country of countriesList" (click)="selectCountry(country)" [value]="country">{{country}}</option>
+                                    <select  name="country" class="form-control border-input" placeholder="Country" required [(ngModel)]="user.country">
+                                        <option *ngFor="let country of countriesList" >{{country}}</option>
                                     </select>
                                 </div>
                             </div>
@@ -109,7 +109,7 @@
                             </div>
                         </div>
                         <div class="text-center">
-                            <button type="submit" class="btn btn-info btn-fill btn-wd" [disabled]="!userForm.form.valid">Actualizar perfil</button>
+                            <button type="submit" (click)="updateUserProfile()" class="btn btn-info btn-fill btn-wd" [disabled]="!userForm.form.valid">Actualizar perfil</button>
                         </div>
                         <div class="clearfix"></div>
                     </form>

@@ -3,6 +3,7 @@ import { FormControl, FormBuilder, Validators } from '@angular/forms';
 
 import { COUNTRIES } from '../mock/constants.mock';
 import { User } from '../model/user';
+import { UserService } from '../service/user.service';
 
 @Component({
     selector: 'user-cmp',
@@ -16,17 +17,18 @@ export class UserComponent implements OnInit{
     countriesList:string[] = COUNTRIES;
     user: User = new User();
      
-    constructor(private fb : FormBuilder){
+    constructor(private fb : FormBuilder, private userService: UserService){
 
     }
     ngOnInit(){
-    }
-
-    selectCountry(country: string){
-        this.user.country = country
+        this.userService.getLogedUser().subscribe(data=>{
+         this.user = data;   
+        })
     }
 
     updateUserProfile(){
-        console.log('bind');
+        this.userService.updateUser(this.user.id,this.user).subscribe(data=>{
+            console.log('something happened here')
+        });
     }
 }

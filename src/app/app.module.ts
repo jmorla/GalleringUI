@@ -21,6 +21,11 @@ import { NotificationsComponent }   from './notifications/notifications.componen
 
 import { BirdService } from './service/bird.service';
 import { BirdDetailComponent } from './bird-detail/bird-detail.component';
+import { LoginComponent } from './login/login.component';
+import { LayoutComponent } from './layout/layout.component';
+import { AuthService } from './service/auth.service';
+import { UserService } from './service/user.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -31,7 +36,9 @@ import { BirdDetailComponent } from './bird-detail/bird-detail.component';
     TypographyComponent,
     IconsComponent,
     NotificationsComponent,
-    BirdDetailComponent
+    BirdDetailComponent,
+    LoginComponent,
+    LayoutComponent
   ],
   imports: [
     BrowserModule,
@@ -42,10 +49,11 @@ import { BirdDetailComponent } from './bird-detail/bird-detail.component';
     FooterModule,
     FixedPluginModule,
     FormsModule,
+    HttpClientModule,
     NguiMapModule.forRoot({apiUrl: 'https://maps.google.com/maps/api/js?key=YOUR_KEY_HERE'})
 
   ],
-  providers: [ BirdService ],
+  providers: [ BirdService, AuthService, UserService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

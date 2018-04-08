@@ -7,39 +7,52 @@ import { TypographyComponent }   from './typography/typography.component';
 import { IconsComponent }   from './icons/icons.component';
 import { NotificationsComponent }   from './notifications/notifications.component';
 import { BirdDetailComponent } from './bird-detail/bird-detail.component';
+import { LayoutComponent } from './layout/layout.component';
+import { LoginComponent } from './login/login.component';
 
 export const AppRoutes: Routes = [
+    
+    {
+        path:'login',
+        component: LoginComponent
+    },
     {
         path: '',
-        redirectTo: 'dashboard',
-        pathMatch: 'full',
+        component: LayoutComponent,
+        children: [
+            {
+                path: '',
+                redirectTo: 'dashboard',
+                pathMatch: 'full',
+            },
+            {
+                path: 'dashboard',
+                component: DashboardComponent
+            },
+            {
+                path: 'configuration',
+                component: UserComponent
+            },
+            {
+                path: 'table',
+                component: TableComponent
+            },
+            {
+                path: 'typography',
+                component: TypographyComponent
+            },
+            {
+                path: 'icons',
+                component: IconsComponent
+            },
+            {
+                path: 'notifications',
+                component: NotificationsComponent
+            },
+            {
+                path: 'bird_details',
+                component: BirdDetailComponent
+            }
+        ]
     },
-    {
-        path: 'dashboard',
-        component: DashboardComponent
-    },
-    {
-        path: 'configuration',
-        component: UserComponent
-    },
-    {
-        path: 'table',
-        component: TableComponent
-    },
-    {
-        path: 'typography',
-        component: TypographyComponent
-    },
-    {
-        path: 'icons',
-        component: IconsComponent
-    },
-    {
-        path: 'notifications',
-        component: NotificationsComponent
-    },
-    {
-        path: 'bird_details',
-        component: BirdDetailComponent
-    }
 ]

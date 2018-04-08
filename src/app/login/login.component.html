@@ -1,0 +1,33 @@
+<div class="main-content">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 col-sm-6 col-md-offset-4 col-sm-offset-3">
+        <div class="card">
+          <div class="header">
+            <h3 class="card-title">Login</h3>
+          </div>
+          <div class="content">
+            <form #login="ngForm" (submit)="login.form.valid">
+            <div class="form-group">
+              <input name="user" class="form-control border-input" required placeholder="Username" [(ngModel)]="username" #spy/>
+            </div>
+            <div class="form-group">
+              <input type="password" name="pass" class="form-control border-input" required placeholder="Password" [(ngModel)]="password"/>
+            </div>
+
+            <div class="text-center">
+              <button class="btn btn-primary" (click)="onLogin()">Login</button>
+            </div>
+            <br/>
+            <div [hidden]="validLogin" class="form-group">
+              <div class="alert alert-danger">
+                Username or password wass wrong
+              </div>
+            </div>
+          </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

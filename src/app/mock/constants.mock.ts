@@ -19,5 +19,25 @@ export const COLOR = [
 ]
 
 export const ENRACES = [
-    ""
+    "Embridium",
+    "And so on"
+]
+
+export const COLOR_PLACA = [
+    "Plateada",
+    "Roja",
+    "Azul"
+]
+
+export const CRESTAS = [
+    "ROSO",
+    "POZON",
+    "DARK CREST"
+]
+
+export const ESTADO = [
+    "Vivo",
+    "Regalado",
+    "Enfermo",
+    "Muerto"
 ]

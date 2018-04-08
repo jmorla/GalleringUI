@@ -41,8 +41,8 @@
 
               <div class="col-md-6">
                 <div class="form-group">
-                  <label>Color de alas</label>
-                  <select name="color" type="text" required class="form-control border-input" placeholder="Color">
+                  <label>Color de ave</label>
+                  <select name="color" type="text" [(ngModel)]="model.color" required class="form-control border-input" placeholder="Color">
                     <option *ngFor="let color of colors">{{color}}</option>
                   </select>
                 </div>
@@ -53,14 +53,14 @@
                 <div class="form-group">
                   <label>Sexo</label>
                   <div class="radio">
-                    <input type="radio" [(ngModel)]="model.sex" name="sex" id="radio1" value="macho" checked="">
-                    <label for="radio1">
+                    <input type="radio" [(ngModel)]="model.sex" name="sex" id="sex1" value="macho" checked="">
+                    <label for="sex1">
                       Macho
                     </label>
                   </div>
                   <div class="radio">
-                    <input type="radio" [(ngModel)]="model.sex" name="sex" id="radio2" value="hembra">
-                    <label for="radio2">
+                    <input type="radio" [(ngModel)]="model.sex" name="sex" id="sex" value="hembra">
+                    <label for="sex2">
                       Hembra
                     </label>
                   </div>
@@ -70,8 +70,8 @@
             <div class="row">
               <div class="col-md-4">
                 <div class="form-group">
-                  <label>Enrace</label>
-                  <select name="enrace" [(ngModel)]="model.enrace" type="text" class="form-control border-input" placeholder="Enrace">
+                  <label>Parentezco</label>
+                  <select name="enrace" required [(ngModel)]="model.enrace" type="text" class="form-control border-input" placeholder="Enrace">
                     <option *ngFor="let enrace of enraces">{{enrace}}</option>
                   </select>
                 </div>
@@ -79,9 +79,9 @@
 
               <div class="col-md-4">
                 <div class="form-group">
-                  <label>Tipo Placa</label>
-                  <select name="plateType" [(ngModel)]="model.plateType" type="text" class="form-control border-input" placeholder="Enrace">
-                      <option *ngFor="let plateType of plateTypes">{{plateType}}</option>
+                  <label>Color de placa</label>
+                  <select name="plateType" required [(ngModel)]="model.plateType" type="text" class="form-control border-input" placeholder="Enrace">
+                    <option *ngFor="let plateType of plateTypes">{{plateType}}</option>
                   </select>
                 </div>
               </div>
@@ -89,8 +89,8 @@
               <div class="col-md-4">
                 <div class="form-group">
                   <label>Tipo Cresta</label>
-                  <select name="color" type="text" [(ngModel)]="model.crestType" class="form-control border-input" placeholder="Enrace">
-                      <option *ngFor="let crest of crests">{{crest}}</option>
+                  <select name="cresta" type="text" required [(ngModel)]="model.crestType" class="form-control border-input" placeholder="Enrace">
+                    <option *ngFor="let crest of crests">{{crest}}</option>
                   </select>
                 </div>
               </div>
@@ -100,19 +100,47 @@
               <div class="col-md-4">
                 <div class="form-group">
                   <label>Estado</label>
-                  <select name="color" type="text" [(ngModel)]="model.status" class="form-control border-input" placeholder="Enrace">
-                      <option *ngFor="let status of statuses">{{status}}</option>
+                  <select name="estados" required type="text" [(ngModel)]="model.status" class="form-control border-input" placeholder="Enrace">
+                    <option *ngFor="let status of statuses">{{status}}</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-md-4" *ngIf="model.status==='Muerto'">
+                <div class="form-group">
+                  <label>Fecha de muerte</label>
+                  <input name="muerte" type="text" required [(ngModel)]="model.died" class="form-control border-input" placeholder="Enrace">
+                </div>
+              </div>
+            </div>
+            <hr>
+            <div class="checkbox">
+              <input name="parent" id="parientes" type="checkbox" [(ngModel)]="hasParents">
+              <label for="parientes">
+                Esta ave tiene parientes?
+              </label>
+            </div>
+
+            <div class="row" *ngIf="hasParents">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>Padre</label>
+                  <select required name="padre" [(ngModel)]="model.fatherId" type="text" class="form-control border-input" placeholder="Padre">
+                    <option *ngFor="let padre of padres">{{padre}}</option>
                   </select>
                 </div>
               </div>
 
               <div class="col-md-4">
                 <div class="form-group">
-                  <label>Fecha de muerte</label>
-                  <input name="color" type="text" [(ngModel)]="model.died" class="form-control border-input" placeholder="Enrace">
+                  <label>Madre</label>
+                  <select required name="madre" [(ngModel)]="model.motherId" type="text" class="form-control border-input" placeholder="Madre">
+                    <option *ngFor="let madre of madres">{{madre}}</option>
+                  </select>
                 </div>
               </div>
             </div>
+            <hr>
             <div class="row">
               <div class="col-md-12">
                 <div class="form-group">
@@ -121,6 +149,7 @@
                 </div>
               </div>
             </div>
+            <hr>
             <div class="text-center">
               <button type="submit" class="btn btn-info btn-fill btn-wd" [disabled]="!userForm.form.valid">Agregar Ave</button>
             </div>
