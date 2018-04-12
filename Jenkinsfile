@@ -10,7 +10,7 @@ node{
 		if("dev"==branch){
 			sh "npm build test"
 		}
-		else if("master"=branch){
+		else if("master"==branch){
 			sh "npm build prod"
 		}
 	}
