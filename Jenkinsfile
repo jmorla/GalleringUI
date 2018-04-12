@@ -4,6 +4,7 @@ node{
 	}
 	stage('Build'){
 		sh 'npm install'
+		sh "${env.BRANCH_NAME}"
 	}
 	stage('Test'){
 		echo "TODO: test"
