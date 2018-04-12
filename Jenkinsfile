@@ -1,14 +1,16 @@
 node{
+	dev branch=env.BRANCH_NAME //representation of the current branch
+
 	stage('SCM'){
 		echo "Doing checkout from ${env.BRANCH_NAME}"
 		checkout scm
 	}
 	stage('Build'){
 		sh 'npm install'
-		if("dev".equals(env.BRANCH_NAME)){
+		if("dev"==branch){
 			sh "npm build test"
 		}
-		else if("master".equal(env.BRANCH_NAME)){
+		else if("master"=branch){
 			sh "npm build prod"
 		}
 	}
