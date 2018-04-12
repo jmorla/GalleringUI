@@ -3,8 +3,10 @@ node{
 		checkout scm
 	}
 	stage('Build'){
+		sh 'npm prune'
 		sh 'npm install'
-		echo "${env.BRANCH_NAME}"
+		echo "Current Environment: ${env.BRANCH_NAME}"
+
 		if(env.BRANCH_NAME == "master")
 		{
 			sh 'ng build prod'
