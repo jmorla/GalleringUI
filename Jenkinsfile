@@ -7,10 +7,10 @@ node{
 	}
 	stage('Build'){
 		sh 'npm install'
-		if("dev"==branch){
+		if('dev' == branch){
 			sh "npm build test"
 		}
-		else if("master"==branch){
+		else if('master' == branch){
 			sh "npm build prod"
 		}
 	}
