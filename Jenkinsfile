@@ -4,7 +4,10 @@ node{
 	}
 	stage('Build'){
 		sh 'npm install'
-		sh "${env.BRANCH_NAME}"
+		echo "${env.BRANCH_NAME}"
+		if(env.BRANCH_NAME.startWith("master")){
+			sh 'npm build prod'
+		}
 	}
 	stage('Test'){
 		echo "TODO: test"
