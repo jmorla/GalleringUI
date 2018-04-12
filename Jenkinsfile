@@ -5,8 +5,13 @@ node{
 	stage('Build'){
 		sh 'npm install'
 		echo "${env.BRANCH_NAME}"
-		if(env.BRANCH_NAME == "master"){
-			sh 'npm build prod'
+		if(env.BRANCH_NAME == "master")
+		{
+			sh 'ng build prod'
+		}
+		else if(env.BRANCH_NAME=="dev")
+		{
+			sh 'ng build dev'
 		}
 	}
 	stage('Test'){
