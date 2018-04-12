@@ -5,7 +5,7 @@ node{
 	stage('Build'){
 		sh 'npm install'
 		echo "${env.BRANCH_NAME}"
-		if(env.BRANCH_NAME == "master")){
+		if(env.BRANCH_NAME == "master"){
 			sh 'npm build prod'
 		}
 	}
